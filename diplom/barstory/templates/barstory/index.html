@@ -1,0 +1,50 @@
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block content %}
+<div class="wrap">
+    <header>
+        <div class="header">
+            <ul class="head">
+                <li class="logo-base">
+                    <a href="#" class="logo"
+                    ><img
+                            src="{% static 'images/logo.png' %}"
+                            alt="logo"
+                            width="40px"
+                            height="80px"
+                    /><span class="font-logo"
+                    ><span style="color: red">BAR</span>Story</span
+                    ></a
+                    >
+                </li>
+                <li></li>
+                <li>Поиск <input type="text"/></li>
+                <li>
+                    <button>Войти</button>
+                </li>
+                <!-- <li><button>Выйти</button></li> -->
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrapper">
+            <ul class="wrap-head">
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Коктейли</a></li>
+                <li><a href="#">Бармены</a></li>
+                <li><a href="#">Интересные места</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <p class="footer">Остались вопросы, свяжитесь с <a href="#">нами</a></p>
+        </div>
+    </footer>
+</div>
+
+{% endblock %}
+
+
