@@ -5,6 +5,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BarStory</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'style/style.css' %}"/>
     <link
             rel="stylesheet"
@@ -12,8 +13,52 @@
     />
 </head>
 <body>
-{% block content %}
+<div class="wrap">
+    <header>
+        <div class="header">
+            <ul class="head">
+                <li class="logo-base">
+                    <a href="#" class="logo"
+                    ><img
+                            src="{% static 'images/logo.png' %}"
+                            alt="logo"
+                            width="40px"
+                            height="80px"
+                    /><span class="font-logo"
+                    ><span style="color: red">BAR</span>Story</span
+                    ></a
+                    >
+                </li>
+                <li></li>
+                <li><a href="{% url 'profile' %}">Пользователь</a></li>
+                <li>
+                    <a href="{% url 'login' %}">Войти</a>
+                </li>
+                <!-- <li><button>Выйти</button></li> -->
+            </ul>
+        </div>
+    </header>
 
-{% endblock %}
+    <main>
+        <div class="wrapper">
+            <ul class="wrap-head">
+                <li><a href="#">Новости</a></li>
+                <li><a href="{% url 'coctails' %}">Коктейли</a></li>
+                <li><a href="#">Бармены</a></li>
+                <li><a href="#">Интересные места</a></li>
+            </ul>
+        </div>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div>
+            <p class="footer">Остались вопросы, свяжитесь с <a href="#">нами</a></p>
+        </div>
+    </footer>
+</div>
+
 </body>
 </html>

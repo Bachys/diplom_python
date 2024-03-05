@@ -54,3 +54,7 @@ footer {
   display: flex;
   justify-content: center;
 }
+
+.cochead {
+  color: #fff;
+}

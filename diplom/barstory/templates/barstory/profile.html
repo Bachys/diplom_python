@@ -1,0 +1,25 @@
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block content %}
+  <div class="user_card">
+    <div>
+      <a href=""><img src="emtyicon.png" alt="" width="300px" height="300px"></a>
+    </div>
+    <a href="">Редактировать профиль</a>
+    <div>
+      <ul>
+        <li>Имя</li>
+        <li>Фамилия</li>
+        <li>Город</li>
+        <li>Место работы</li>
+        <li>Должность</li>
+        <li>Опыт работы</li>
+      </ul>
+    </div>
+    <form action="">
+      <label for="">Сообщение пользователю</label>
+      <textarea name="" id="" cols="30" rows="10"></textarea>
+      <input type="submit" name="" id="" value="Отправить">
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block content %}
+<div class="reg_card">
+    <div>
+        <h2>Вход в аккаунт</h2>
+    </div>
+    <form action="">
+        <div>
+            <label for="">Имя пользователя</label>
+            <input type="text"/>
+        </div>
+        <div>
+            <label for="">Пароль</label>
+            <input type="text"/>
+        </div>
+        <div>
+            <input type="submit" value="Войти"/>
+        </div>
+    </form>
+    <div>
+        <h4>Зарегистрируйтесь, если нет аккаунта</h4>
+        <a href="">Регистрация</a>
+    </div>
+</div>
+{% endblock %}
