@@ -1,0 +1,15 @@
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block content %}
+
+<div class="reg_card">
+
+    <h1>Регистрация</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="">Зарегестрироваться</button>
+    </form>
+
+</div>
+{% endblock %}

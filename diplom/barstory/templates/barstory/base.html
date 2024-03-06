@@ -30,11 +30,22 @@
                     >
                 </li>
                 <li></li>
-                <li><a href="{% url 'profile' %}">Пользователь</a></li>
+
+                <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+                {% if user.is_authenticated %}
                 <li>
-                    <a href="{% url 'login' %}">Войти</a>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button class="out">Выход</button>
+                    </form>
                 </li>
-                <!-- <li><button>Выйти</button></li> -->
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}">Вход/Регистрация</a>
+                </li>
+                {% endif %}
+
+
             </ul>
         </div>
     </header>
