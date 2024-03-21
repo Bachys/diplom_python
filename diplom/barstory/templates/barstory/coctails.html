@@ -2,12 +2,19 @@
 {% load static %}
 {% block content %}
 
-<h1 class="cochead">Коктейли</h1>
+<div class="coctailwrap">
 
-<ul>
-    <li>Классические коктейли по версии IBA</li>
-    <li></li>
-    <li></li>
-</ul>
 
+    <a href="#submenu" class="main-item" tabindex="1">Классические коктейли по версии IBA</a>
+
+    <ul id='submenu' class="sub-menu">
+        <div class="list-coctail">
+            {% for obj in coc %}
+            <li><a href="{% url 'single' %}">{{ obj.title }}</a></li>
+            {% endfor %}
+        </div>
+    </ul>
+
+</div>
 {% endblock %}
+

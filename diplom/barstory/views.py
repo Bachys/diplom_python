@@ -3,6 +3,16 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from .models import ClassicCocktails
+
+
+def single_coctail(request):
+    coc = ClassicCocktails.objects.all()
+    return render(request, 'barstory/singlcoctail.html', {'coc': coc})
+
+
+def news(request):
+    return render(request, 'barstory/news.html')
 
 
 def home_page(request):
@@ -10,7 +20,8 @@ def home_page(request):
 
 
 def coctails(request):
-    return render(request, 'barstory/coctails.html')
+    coc = ClassicCocktails.objects.all()
+    return render(request, 'barstory/coctails.html', {'coc': coc})
 
 
 def profile(request):
