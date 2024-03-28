@@ -35,3 +35,15 @@ class ClassicCocktails(models.Model):
         verbose_name = 'коктейль'
         verbose_name_plural = 'коктейли'
         ordering = ['title']
+
+
+class Slider(models.Model):
+    img = models.ImageField(upload_to='slider_img/', verbose_name='Изображение')
+    title = models.CharField(max_length=255, verbose_name='Заголовок')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'слайд'
+        verbose_name_plural = 'Слайды'

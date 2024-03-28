@@ -3,12 +3,17 @@
 {% block content %}
 
 <div class="reg_card">
-
+    <h2>{{ error }}</h2>
     <h1>Регистрация</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" name="">Зарегестрироваться</button>
+        <h4>Есть аккаунт, входите</h4>
+        <a href="{% url 'login' %}">Вход</a>
+        <div>
+
+    </div>
     </form>
 
 </div>

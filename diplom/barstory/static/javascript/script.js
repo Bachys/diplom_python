@@ -1,6 +1,8 @@
-document.getElementById("submenu").addEventListener("click", function (event) {
-  let submenu = document.getElementById("submenu");
-  if (event.target === submenu) {
-    submenu.style.display = "none";
+function toggleButton() {
+  let element = document.getElementById('container');
+  if (element.style.display === 'none') {
+      element.style.display = 'block';
+  } else {
+      element.style.display = 'none';
   }
-});
+}

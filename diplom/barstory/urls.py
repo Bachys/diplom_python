@@ -10,6 +10,6 @@ urlpatterns = [
     path('registration/', views.registration, name='registration'),
     path('logout/', views.logoutuser, name='logout'),
     path('news/', views.news, name='news'),
-    path('single/', views.single_coctail, name='single'),
+    path('single/<str:pk>/', views.single_coctail, name='single'),
 ]
 

@@ -4,17 +4,19 @@
 
 <div class="coctailwrap">
 
+    <a href="#" onclick=toggleButton() class="">Классические коктейли по версии IBA</a>
 
-    <a href="#submenu" class="main-item" tabindex="1">Классические коктейли по версии IBA</a>
 
-    <ul id='submenu' class="sub-menu">
-        <div class="list-coctail">
-            {% for obj in coc %}
-            <li><a href="{% url 'single' %}">{{ obj.title }}</a></li>
-            {% endfor %}
-        </div>
-    </ul>
+    <div id="container" style="display: none">
+        <ul>
+            <div class="list-coctail" >
+                {% for obj in coc %}
+                <li><a href="{% url 'single' obj.id %}">{{ obj.title }}</a></li>
+                {% endfor %}
+            </div>
+        </ul>
+    </div>
 
 </div>
-{% endblock %}
 
+{% endblock %}

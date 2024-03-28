@@ -1,14 +1,19 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import ClassicCocktails
+from .models import ClassicCocktails, Profile
 
 
-def single_coctail(request):
+def single_coctail(request, pk):
+    obj = ClassicCocktails.objects.get(id=pk)
     coc = ClassicCocktails.objects.all()
-    return render(request, 'barstory/singlcoctail.html', {'coc': coc})
+    context = {'coctail': obj,
+               'coc': coc,
+               }
+    return render(request, 'barstory/singlcoctail.html', context)
 
 
 def news(request):
@@ -25,7 +30,9 @@ def coctails(request):
 
 
 def profile(request):
-    return render(request, 'barstory/profile.html')
+    prof = Profile.objects.all()
+    context = {'profile': prof}
+    return render(request, 'barstory/profile.html', context)
 
 
 def loginuser(request):

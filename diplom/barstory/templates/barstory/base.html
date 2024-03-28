@@ -11,7 +11,7 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
     />
-    <script src="{% static 'javascript/script.js' %}"></script>
+
 </head>
 <body>
 <div class="wrap">
@@ -42,7 +42,7 @@
                 </li>
                 {% else %}
                 <li>
-                    <a href="{% url 'login' %}">Вход/Регистрация</a>
+                    <button class="enter"><a href="{% url 'login' %}">Вход/Регистрация</a></button>
                 </li>
                 {% endif %}
 
@@ -56,7 +56,7 @@
             <ul class="wrap-head">
                 <li><a href="{% url 'news' %}">Новости</a></li>
                 <li><a href="{% url 'coctails' %}">Коктейли</a></li>
-                <li><a href="#">Бармены</a></li>
+                <li><a href="#">Контент</a></li>
                 <li><a href="#">Интересные места</a></li>
             </ul>
         </div>
@@ -67,10 +67,16 @@
 
     <footer>
         <div>
-            <p class="footer">Остались вопросы, свяжитесь с <a href="#">нами</a></p>
+            <p class="footer">По вопросам сотрудничества, свяжитесь с нами
+                <a href="#"><img src="{% static 'images/inbox.png' %}" class="inbox"></a>
+                <a href="https://t.me/Bachys"><img src="{% static 'images/tg.png' %}" class="inbox"></a>
+                <a href="https://api.whatsapp.com/send?phone=9113789049" target='blank'> <img src="{% static 'images/wats.png' %}" class="inbox"></a>
+
+            </p>
         </div>
     </footer>
 </div>
 
+<script src="{% static 'javascript/script.js' %}" ></script>
 </body>
 </html>
