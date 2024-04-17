@@ -11,5 +11,6 @@ urlpatterns = [
     path('logout/', views.logoutuser, name='logout'),
     path('news/', views.news, name='news'),
     path('single/<str:pk>/', views.single_coctail, name='single'),
+    path('politica', views.politica, name='politica'),
 ]
 

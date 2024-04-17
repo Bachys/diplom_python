@@ -6,11 +6,13 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import ClassicCocktails, Profile
 
 
+def politica(request):
+    return render(request, 'barstory/politica.html')
+
+
 def single_coctail(request, pk):
     obj = ClassicCocktails.objects.get(id=pk)
-    coc = ClassicCocktails.objects.all()
     context = {'coctail': obj,
-               'coc': coc,
                }
     return render(request, 'barstory/singlcoctail.html', context)
 

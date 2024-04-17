@@ -1,20 +1,33 @@
-{% extends 'barstory/base.html'%}
-{% load static %}
-{% block content %}
+{% extends 'barstory/base.html'%} {% load static %} {% block content %}
 
-<div class="reg_card">
-    <h2>{{ error }}</h2>
-    <h1>Регистрация</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" name="">Зарегестрироваться</button>
-        <h4>Есть аккаунт, входите</h4>
-        <a href="{% url 'login' %}">Вход</a>
-        <div>
+<div class="reg_card" >
+  <h2 class="error">{{ error }}</h2>
 
+  <div>
+    <h2 class="form-h">Регистрация</h2>
+  </div>
+  <form action="{% url 'registration' %}" method="post" class="reg_card-form">
+    {% csrf_token %}
+    <div class="logform">
+      <div class="inputform">
+        <label for="">Введите имя пользователя</label>
+        {{ form.username }}
+      </div>
+      <div class="inputform">
+        <label for="">Введите пароль</label>
+        {{ form.password1 }}
+      </div>
+      <div class="inputform">
+        <label for="">Повторите пароль</label>
+        {{ form.password2 }}
+      </div>
+
+      <button type="submit" name="" class="form-but">Регистрация</button>
     </div>
-    </form>
-
+    <div class="form-foot">
+      <h5 class="form-h">Есть аккаунт, входите</h5>
+      <a href="{% url 'login' %}" class="log-reg-link">Вход</a>
+    </div>
+  </form>
 </div>
 {% endblock %}

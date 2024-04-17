@@ -2,21 +2,30 @@
 {% load static %}
 {% block content %}
 
-<div class="coctailwrap">
+<section class="single-coctail-wrap">
 
-    <a href="#" onclick=toggleButton() class="">Классические коктейли по версии IBA</a>
+  {% for coctail in coc|slice:"9" %}
+  <div class="coctails-page">
+    <a href="#"><img src="{{ coctail.photo.url }}" alt="coctail foto" width="200px" height="200px"></a>
+    <a href="#"><h4>{{ coctail.title }}</h4></a>
+  </div>
+  {% endfor %}
 
-
-    <div id="container" style="display: none">
-        <ul>
-            <div class="list-coctail" >
-                {% for obj in coc %}
-                <li><a href="{% url 'single' obj.id %}">{{ obj.title }}</a></li>
-                {% endfor %}
-            </div>
-        </ul>
-    </div>
-
+  <nav>
+    <ul class="pagination-coc justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Предыдущая</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Следующая</a>
+      </li>
+    </ul>
+  </nav>
 </div>
+
+</section>
 
 {% endblock %}

@@ -6,12 +6,12 @@
 
 
 <div class="single-coc">
-  {% for c in coc %}
-  <h1>{{ c.title }}</h1>
-  <img src="{{ c.photo.url }}" alt="coctail foto" width="100px" height="100px">
-  <p>{{ c.text }}</p>
-  <p>{{ c.recept }}</p>
-  {% endfor %}
+
+  <h1>{{ coctail.title }}</h1>
+  <img src="{{ coctail.photo.url }}" alt="coctail foto" width="100px" height="100px">
+  <p>{{ coctail.text }}</p>
+  <p>{{ coctail.recept }}</p>
+
 </div>
 
 

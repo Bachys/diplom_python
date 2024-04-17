@@ -1,24 +1,36 @@
-{% extends 'barstory/base.html'%}
-{% load static %}
-{% block content %}
+{% extends 'barstory/base.html'%} {% load static %} {% block content %}
+<section class="data-main">
+    <div class="wrap-data-main">
+        <div class="reg_card">
+            <h2 class="error">{{ error }}</h2>
 
+            <div>
+                <h2 class="form-h">Вход в аккаунт</h2>
+            </div>
+            <form action="{% url 'login' %}" method="post" class="reg_card-form">
+                {% csrf_token %}
+                <div class="logform">
+                    <div class="inputform">
+                        <label for="">Введите имя пользователя</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="inputform">
+                        <label for="">Введите пароль</label>
+                        {{ form.password }}
+                    </div>
 
-<div class="reg_card">
+                    <button type="submit" name="" class="form-but">Войти</button>
+                </div>
+                <div class="form-foot">
+                    <h5 class="form-h">Зарегистрируйтесь, если нет аккаунта</h5>
+                    <a href="{% url 'registration' %}" class="log-reg-link">Регистрация</a>
+                </div>
 
-    <h2>{{ error }}</h2>
-
-    <div>
-        <h2>Вход в аккаунт</h2>
+                <div class="forgot-pass">
+                    <a href="#">Забыли пароль?</a>
+                </div>
+            </form>
+        </div>
     </div>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" name="">Войти</button>
-    </form>
-
-    <div>
-        <h4>Зарегистрируйтесь, если нет аккаунта</h4>
-        <a href="{% url 'registration' %}">Регистрация</a>
-    </div>
-</div>
+</section>
 {% endblock %}

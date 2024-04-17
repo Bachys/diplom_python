@@ -1,20 +1,18 @@
 {% extends 'barstory/base.html'%}
 {% load static %}
 {% block content %}
-  <div class="user_card">
-    <div>
-      <a href=""><img src="" alt="" width="300px" height="300px"></a>
-    </div>
-    <a href="">Редактировать профиль</a>
-    <div>
-      <ul>
-        <li>Имя</li>
-        <li>Фамилия</li>
-        <li>Город</li>
-        <li>Место работы</li>
-        <li>Должность</li>
-        <li>Опыт работы</li>
-      </ul>
-    </div>
+  <div class="main-section">
+  <div class="wrap-data-main">
+    <button class="edit-button">E <br> D <br> I <br> T</button>
+    <div class="user-card">
+      <h1>{{ user.profile.first_name }} {{ user.profile.last_name }}</h1>
+      <img src="{{ user.profile.profile_image.url }}" alt="photo" class="user-icon">
+      <p>{{ user.profile.username }}</p>
+      <p>town</p>
+      <p><a href="">{{ user.profile.workplace }}</a></p>
+      <p class="profile-bio">{{ user.profile.bio }}</p>
+      <p class="prifile-date">{{ user.profile.created }}</p>
   </div>
+  </div>
+</div>
 {% endblock %}
