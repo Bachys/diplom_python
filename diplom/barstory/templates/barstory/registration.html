@@ -1,33 +1,43 @@
-{% extends 'barstory/base.html'%} {% load static %} {% block content %}
-
-<div class="reg_card" >
-  <h2 class="error">{{ error }}</h2>
-
-  <div>
-    <h2 class="form-h">Регистрация</h2>
-  </div>
-  <form action="{% url 'registration' %}" method="post" class="reg_card-form">
-    {% csrf_token %}
-    <div class="logform">
-      <div class="inputform">
-        <label for="">Введите имя пользователя</label>
-        {{ form.username }}
-      </div>
-      <div class="inputform">
-        <label for="">Введите пароль</label>
-        {{ form.password1 }}
-      </div>
-      <div class="inputform">
-        <label for="">Повторите пароль</label>
-        {{ form.password2 }}
-      </div>
-
-      <button type="submit" name="" class="form-but">Регистрация</button>
-    </div>
-    <div class="form-foot">
-      <h5 class="form-h">Есть аккаунт, входите</h5>
-      <a href="{% url 'login' %}" class="log-reg-link">Вход</a>
-    </div>
-  </form>
-</div>
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block title %}
+{{ title }}
 {% endblock %}
+{% block content %}
+<div class="data-main">
+    <div class="wrap-reg-main">
+        <div class="reg_card">
+            <h2 class="error">{{ error }}</h2>
+
+            <div>
+                <h2 class="form-h">Регистрация</h2>
+            </div>
+            <div>
+                <form action="{% url 'registration' %}" method="post" class="reg_card-form">
+                    {% csrf_token %}
+                    <div class="logform">
+                        <div class="inputform">
+                            <label for="">username</label>
+                            {{ form.username }}
+                        </div>
+                        <div class="inputform">
+                            <label for="">password</label>
+                            {{ form.password1 }}
+                        </div>
+                        <div class="inputform">
+                            <label class="label-confirm" for="">confirm password</label>
+                            {{ form.password2 }}
+                        </div>
+
+                        <button type="submit" name="" class="form-but">Регистрация</button>
+                    </div>
+                    <div class="form-foot">
+                        <h5 class="form-h">Есть аккаунт, входите</h5>
+                        <a  href="{% url 'login' %}" class="log-reg-link">Вход</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock %}

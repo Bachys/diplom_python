@@ -4,26 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ForBartenders</title>
-    <link rel="stylesheet" href="{% static 'style/style.css'%}">
-    <!-- <script src="script.js"></script> -->
+    <title>{% block title %} {% endblock %}</title>
+
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
+    <link rel="stylesheet" href="{% static 'style/style.css'%}">
 </head>
 <body>
+
+<div id="overlay" class="overlay">
+    <div class="modal">
+        <img src="{% static 'images/18+.png' %}" width="100px" height="100px">
+        <h2>Вам есть 18 лет?</h2>
+        <p>Информация на сайте не предназначена для посетителей младше 18 лет. Для доступа к ней подтвердите,
+            пожалуйста, свое совершеннолетие.</p>
+        <button id="confirmBtn">Да, мне есть 18 лет</button>
+
+    </div>
+</div>
 
 <section class="header">
     <div class="head-nav">
         <ul class="head-ul">
             <li><a href="{% url 'home_page' %}"><img src="{% static 'images/bartender.png'%}" class="logo"></a></li>
         </ul>
-        <ul class="head-ul center-head-ul">
-            <li><a href=""><img src="{% static 'images/youtube.png' %}" class="youtube-h"></a></li>
-            <li><a href=""><img src="{% static 'images/tg.png' %}" class="tg-h"></a></li>
-            <li><a href=""><img src="{% static 'images/vk.png' %}" class="vk-h"></a></li>
+        <ul id="top" class="banner center-head-ul">
+            <div class="banner-text">
+                <span>
+                    <a href="https://msk.top-academy.ru/" target="_blank">
+                   <img src="{% static 'images/top.png' %}" alt="" width="250px" height="70px">
+                    </a>
+                </span>
+            </div>
         </ul>
+
         <ul class="head-ul right-head-ul">
             {% if request.user.is_authenticated %}
-            <li><a href=""> {{ user }} </a></li>
+            <li><a href="{% url 'profile' %}"> {{ user }} </a></li>
             <li>
                 <form method="post" action="{% url 'logout' %}">
                     {% csrf_token %}
@@ -31,18 +47,18 @@
                 </form>
             </li>
             {% else %}
-            <li><a href="{% url 'login' %}">Вход/Регистрация</a></li>
+            <li><a href="{% url 'login' %}">Вход</a></li>
             {% endif %}
         </ul>
     </div>
 </section>
-<hr>
+<!--<hr>-->
 
 <div class="main-section">
 
     {% include 'barstory/navigate.html' %}
 
-    <hr>
+    <!--    <hr>-->
     {% block content %}
     <section class="data-main">
         <div class="wrap-data-main">
@@ -71,19 +87,22 @@
     </section>
 </div>
 {% endblock %}
-<hr>
+<!--<hr>-->
 
 <footer>
     <div>
         <ul class="foot-ul">
             <li>
-                <a href="">Politica</a>
+                <a href="{% url 'politica' %}">Политика конфеденциальности</a>
             </li>
             <li>
-                <a href="">Контакты</a>
+                <a href="{% url 'contact' %}">Контакты</a>
             </li>
         </ul>
     </div>
 </footer>
+
+
+<script type="text/javascript" src="{% static 'javascript/script.js' %}"></script>
 </body>
 </html>

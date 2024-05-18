@@ -1,0 +1,77 @@
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+
+ <div class="coctail-search">
+    <form id="search" class="form" action="{% url 'bartenders' %}" method="get">
+        <div class="form-field">
+            <label for="formInput#search">Поиск по бартендерам </label>
+            <input class="input input-text" id="formInput#search" type="text" name="search_query"
+                   placeholder="Введите имя" value="{{ search }}"/>
+            <input class="btn-sub" type="submit" value="Поиск"/>
+        </div>
+    </form>
+</div>
+
+<div class="main-section">
+    <div class="wrap-data-main">
+        <div class="all-barmen">
+            <h2>Наши Бармены</h2>
+            {% for bartender in barman %}
+            <div class="single-barmen">
+                <div class=""><img class="single-barmen-img" src="{{ bartender.profile_image.url }}"
+                                              alt="bartender foto" width="100px" height="100px">
+                </div>
+                <div class="">
+                    <h6 class="barman-head">Имя</h6>
+                    <p>{{ bartender.first_name}}  {{ bartender.last_name}}</p>
+                </div>
+                <div class="">
+                    <h6 class="barman-head">Место работы</h6>
+                    <p>{{ bartender.workplace}}</p>
+                </div>
+                <div class="">
+                    <h6 class="barman-head">Город</h6>
+                    <p>{{ bartender.town}}</p>
+                </div>
+            </div>
+            <hr>
+            {% if barman %}
+            <div class="pag">
+                <nav class="nav-paginator">
+                    <ul class="pagination-coc justify-content-center">
+                        {% if barman.has_previous %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="?page={{ barman.previous_page_number }}" tabindex="-1"
+                               aria-disabled="true">&lang;
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% if barman.has_other_pages %}
+                        {% for page in barman.paginator.page_range %}
+                        <li class="page-item {% if page == barman.number %} active {% endif %}" }>
+                            <a class="page-link" href="?page={{page}}">{{ page }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+
+                        {% if barman.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ barman.next_page_number }}"> &rang;</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

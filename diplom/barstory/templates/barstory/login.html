@@ -1,36 +1,39 @@
-{% extends 'barstory/base.html'%} {% load static %} {% block content %}
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
 <section class="data-main">
-    <div class="wrap-data-main">
+    <div class="wrap-reg-main">
         <div class="reg_card">
             <h2 class="error">{{ error }}</h2>
 
             <div>
                 <h2 class="form-h">Вход в аккаунт</h2>
             </div>
-            <form action="{% url 'login' %}" method="post" class="reg_card-form">
-                {% csrf_token %}
-                <div class="logform">
-                    <div class="inputform">
-                        <label for="">Введите имя пользователя</label>
-                        {{ form.username }}
+            <div>
+                <form action="{% url 'login' %}" method="post" class="reg_card-form">
+                    {% csrf_token %}
+                    <div class="logform">
+                        <div class="inputform">
+                            <label for="">username</label>
+                            {{ form.username }}
+                        </div>
+                        <div class="inputform">
+                            <label for="">password</label>
+                            {{ form.password }}
+                        </div>
+
+                        <button type="submit" name="" class="form-but">Войти</button>
                     </div>
-                    <div class="inputform">
-                        <label for="">Введите пароль</label>
-                        {{ form.password }}
+                    <div class="form-foot">
+                        <h5 class="form-h">Зарегистрируйтесь, если нет аккаунта</h5>
+                        <a  href="{% url 'registration' %}" class="log-reg-link">Регистрация</a>
                     </div>
 
-                    <button type="submit" name="" class="form-but">Войти</button>
-                </div>
-                <div class="form-foot">
-                    <h5 class="form-h">Зарегистрируйтесь, если нет аккаунта</h5>
-                    <a href="{% url 'registration' %}" class="log-reg-link">Регистрация</a>
-                </div>
-
-                <div class="forgot-pass">
-                    <a href="#">Забыли пароль?</a>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 </section>
 {% endblock %}

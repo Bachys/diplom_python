@@ -1,0 +1,38 @@
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+
+
+<section class="data-main">
+    <div class="wrap-data-main">
+
+        <div class="contact">
+            <h2>Как с нами связаться</h2>
+            <div class="contact-info">
+                <h3>
+                    По всем вопросам обращайтесь : <a href="mailto:diplombar@ya.ru">diplombar@ya.ru</a>
+                </h3>
+                <h3>Также наши мессенджеры :</h3>
+
+                <div class="icon-block">
+                    <a href="#"><img src="{% static 'images/vk.png' %}" alt="vk" class="icon-seti"></a>
+                    <p> - Наш Вконтакт</p>
+                </div>
+                <div class="icon-block">
+                    <a href="#"><img src="{% static 'images/tg.png' %}" alt="telegramm" class="icon-seti"></a>
+                    <p> - Наш Телеграмм</p>
+                </div>
+                <div class="icon-block">
+                    <a href="#"><img src="{% static 'images/wats.png' %}" alt="waysupp" class="icon-seti"></a>
+                    <p> - Наш Вотсап</p>
+                </div>
+                <h3>Ещё можно связаться по телефону : <span class="number">+7 987 654 32 10</span></h3>
+            </div>
+            <img src="{% static 'images/logo.png' %}" alt="" class="contact-logo">
+        </div>
+    </div>
+</section>
+{% endblock %}

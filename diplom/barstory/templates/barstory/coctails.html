@@ -1,31 +1,63 @@
 {% extends 'barstory/base.html'%}
 {% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
 {% block content %}
 
-<section class="single-coctail-wrap">
-
-  {% for coctail in coc|slice:"9" %}
-  <div class="coctails-page">
-    <a href="#"><img src="{{ coctail.photo.url }}" alt="coctail foto" width="200px" height="200px"></a>
-    <a href="#"><h4>{{ coctail.title }}</h4></a>
-  </div>
-  {% endfor %}
-
-  <nav>
-    <ul class="pagination-coc justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Предыдущая</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Следующая</a>
-      </li>
-    </ul>
-  </nav>
+ <div class="coctail-search">
+    <form id="search" class="form" action="{% url 'coctails' %}" method="get">
+        <div class="form-field">
+            <label for="formInput#search">Поиск по коктейлям </label>
+            <input class="input input-text" id="formInput#search" type="text" name="search_query"
+                   placeholder="Введите название коктейля" value="{{ search }}"/>
+            <input class="btn-sub" type="submit" value="Поиск"/>
+        </div>
+    </form>
 </div>
 
-</section>
+<div class="wrap-data-main">
 
+    <section class="single-coctail-wrap">
+
+
+
+        {% for coctail in coc %}
+        <div class="coctails-page">
+            <a href="{% url 'single' coctail.id %}"><img src="{{ coctail.photo.url }}" alt="coctail foto" width="200px"
+                                                         height="200px"></a>
+            <a href="{% url 'single' coctail.id %}"><h4>{{ coctail.title }}</h4></a>
+        </div>
+        {% endfor %}
+
+        {% if coc %}
+        <nav class="nav-paginator">
+            <ul class="pagination-coc justify-content-center">
+                {% if coc.has_previous %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="?page={{ coc.previous_page_number }}" tabindex="-1" aria-disabled="true">&lang;
+                        </a>
+                </li>
+                {% endif %}
+
+                {% if coc.has_other_pages %}
+                {% for page in coc.paginator.page_range %}
+                <li class="page-item {% if page == coc.number %} active {% endif %}" }>
+                    <a class="page-link" href="?page={{page}}">{{ page }}</a></li>
+                {% endfor %}
+                {% endif %}
+
+                {% if coc.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ coc.next_page_number }}"> &rang;</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        {% endif %}
+
+
+    </section>
+</div>
 {% endblock %}

@@ -1,15 +1,19 @@
 {% extends 'barstory/base.html'%}
 {% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
 {% block content %}
   <div class="main-section">
   <div class="wrap-data-main">
-    <button class="edit-button">E <br> D <br> I <br> T</button>
+    <a href="{% url 'edit-prof' %}" class="edit-button" >E <br> D <br> I <br> T</a>
     <div class="user-card">
       <h1>{{ user.profile.first_name }} {{ user.profile.last_name }}</h1>
       <img src="{{ user.profile.profile_image.url }}" alt="photo" class="user-icon">
       <p>{{ user.profile.username }}</p>
-      <p>town</p>
-      <p><a href="">{{ user.profile.workplace }}</a></p>
+      <p>{{ user.profile.workplace }}</p>
+      <p>{{ user.profile.town }}</p>
+
       <p class="profile-bio">{{ user.profile.bio }}</p>
       <p class="prifile-date">{{ user.profile.created }}</p>
   </div>

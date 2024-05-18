@@ -1,0 +1,18 @@
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+<div class="main-section">
+    <div class="wrap-data-main">
+        <form class="edit-form" action="{% url 'edit-prof' %}" method="post" enctype="multipart/form-data">
+            <h2 class="prof-center">Отредактируйте профиль</h2>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="edit-button-confirm" value="SAVE">
+        </form>
+    </div>
+</div>
+{% endblock %}
+

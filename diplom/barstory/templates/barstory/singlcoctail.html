@@ -1,18 +1,22 @@
 {% extends 'barstory/base.html'%}
 {% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
 {% block content %}
 
 
+<div class="wrap-data-main">
+    <div class="single-coc">
 
+        <h1>{{ coctail.title }}</h1>
+        <img src="{{ coctail.photo.url }}" alt="coctail foto" width="400px" height="400px" class="singl-img">
+        <h3>История коктейля</h3>
+        <p>{{ coctail.text|safe }}</p>
+        <h3>Рецепт коктейля</h3>
+        <p>{{ coctail.recept|safe }}</p>
 
-<div class="single-coc">
-
-  <h1>{{ coctail.title }}</h1>
-  <img src="{{ coctail.photo.url }}" alt="coctail foto" width="100px" height="100px">
-  <p>{{ coctail.text }}</p>
-  <p>{{ coctail.recept }}</p>
+    </div>
 
 </div>
-
-
 {% endblock %}

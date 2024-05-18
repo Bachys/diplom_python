@@ -1,0 +1,19 @@
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+
+<div class="wrap-data-main">
+    <div class="single-coc">
+
+        <h1>{{ news.title|safe }}</h1>
+        <p>{{ news.news_text|safe }}</p>
+        <h3></h3>
+
+    </div>
+
+</div>
+
+{% endblock %}

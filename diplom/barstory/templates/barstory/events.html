@@ -1,0 +1,23 @@
+{% extends 'barstory/base.html'%}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+<div class="main-section">
+    <div class="wrap-data-main">
+
+        <div class="main events">
+             <h2>Календарь событий индустрии</h2>
+            {% for ev in event %}
+            <h6>{{ ev.title|safe }}</h6>
+            <img src="{{ ev.event_photo.url }}" alt="" width="400px">
+            <p>{{ ev.event_text|safe }}</p>
+            <hr>
+            {% endfor %}
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
